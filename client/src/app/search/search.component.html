@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="input-group mb-3">
+      <div class="form-floating">
+        <input [formControl]="productName" class="form-control" placeholder="Enter product name" autocomplete="off"
+          (blur)="closeDropdown()" (focus)="onFocus()">
+        <label>Enter product name</label>
+      </div>
+      <div class="form-floating">
+        <input [formControl]="weight" type="number" class="form-control" placeholder="Enter weight (g/ml)"
+          autocomplete="off">
+        <label>Enter weight (g/ml)</label>
+      </div>
+        <button (click)="addProduct()" class="btn btn-primary ml-2">Add</button>
+    </div>
+  </div>
+</div>
+
+<div dropdown class="dropdown" *ngIf="!noProductsFound && products.length > 0">
+  <ul class="dropdown-menu show" style="width: 100%;">
+    <li *ngFor="let product of products | slice:0:10; let i=index"
+      (mousedown)="selectProduct(product)" class="dropdown-item">
+      <img [src]="product.imageUrl || 'assets/product.jpg'" alt="" class="img-thumbnail"
+        *ngIf="product.imageUrl">
+      {{product.productName}} - ({{product.calories | number: '1.0-2'}} kcal | {{product.fats | number: '1.0-2'}} fats | {{product.carbohydrates | number: '1.0-2'}} carbs | {{product.proteins | number: '1.0-2'}} proteins)
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="noProductsFound">
+  <p>No products found. Please try a different search term.</p>
+</div>

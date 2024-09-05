@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Search Product</h2>
+
+  <app-search (product)="onProductAdd($event)"/>
+</div>
+
+
+<div *ngIf="noProductsFound">
+  <p>No products found. Please try a different search term.</p>
+</div>
+
+<div class="container mt-4">
+  <div class="meal-section">
+    <h4 class="text-primary">Your Products</h4>
+    <app-product-list [products]="products" [product]="product"/>
+  </div>
+</div>

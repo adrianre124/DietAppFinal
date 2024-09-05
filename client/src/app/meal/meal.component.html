@@ -1,0 +1,5 @@
+<form [formGroup]="mealForm" (ngSubmit)="addMeal()">
+  <app-text-input formControlName="name" label="Meal name" required/>
+  <button type="submit" class="btn btn-success">Add Meal</button>
+</form>
+<hr>

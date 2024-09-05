@@ -1,0 +1,17 @@
+<form [formGroup]="addProductForm" (ngSubmit)="addProduct()" autocomplete="off">
+  <h2 class="text-center text-primary">New Product</h2>
+  <hr>
+
+  <div class="mb-3">
+    <app-text-input formControlName="productName" label="Product Name"/>
+    <app-text-input formControlName="calories" label="Calories (Kcal)" type="number"/>
+    <app-text-input formControlName="proteins" label="Proteins (g)" type="number"/>
+    <app-text-input formControlName="carbohydrates" label="Carbohydrates (g)" type="number"/>
+    <app-text-input formControlName="fats" label="Fats (g)" type="number"/>
+    <app-text-input formControlName="sugars" label="Sugars (g)" type="number"/>
+    <app-text-input formControlName="salt" label="Salt (g)" type="number"/>
+  </div>
+  <app-photo-editor (fileChange)="onFileUpload($event)"/>
+
+  <button [disabled]="isLoading || !addProductForm.valid" type="submit" class="btn btn-primary mt-4 mb-5 float-start">Add Product</button>
+</form>

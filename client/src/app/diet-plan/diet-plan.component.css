@@ -1,0 +1,8 @@
+.diet-plan-container {
+  display: flex;
+}
+
+.diet-plan-details {
+  margin: auto;
+  padding: 20px;
+}

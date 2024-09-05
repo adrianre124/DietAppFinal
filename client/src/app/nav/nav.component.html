@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Make Diet</a>
+
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a routerLink="/diet" routerLinkActive="active" class="nav-link">Diet</a>
+        </li>
+        @if (accountService.currentUser()) {
+          <li class="nav-item">
+            <a routerLink="/diet-plan" routerLinkActive="active" class="nav-link">Your Diet Plans</a>
+          </li>
+        }
+      </ul>
+
+    @if (accountService.currentUser()) {
+      <div dropdown class="dropdown">
+        <!-- <img class="me-2" src="./assets/user.png" alt="user main image"> -->
+        <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">
+          Welcome {{accountService.currentUser()?.username}}
+        </a>
+        <div *dropdownMenu class="dropdown-menu">
+          <a routerLink="/product" class="dropdown-item">Your Products</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </div>
+    }
+
+    @if (!accountService.currentUser()) {
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
+        <input name="email" [(ngModel)]="model.email" class="form-control me-2" placeholder="Email">
+        <input name="password" [(ngModel)]="model.password" class="form-control me-2" placeholder="Password"
+          type="password">
+        <button class="btn btn-success" type="submit">Login</button>
+      </form>
+    }
+  </div>
+</nav>

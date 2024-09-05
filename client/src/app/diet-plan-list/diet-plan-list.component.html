@@ -1,0 +1,21 @@
+<div class="side-menu mh-75 overflow-auto">
+  <h3 class="mb-3">
+    Diet Plans
+    <button class="btn btn-success btn-sm" (click)="loadForm()"><fa-icon [icon]="faPlus" size="lg"></fa-icon></button>
+  </h3>
+  <form *ngIf="loadFormBool" [formGroup]="dietPlanForm" (ngSubmit)="addDietPlan()">
+    <div>
+      <app-text-input formControlName="name" label="Diet Plan Name"/>
+      <button type="submit" class="btn btn-success btn-sm" [disabled]="dietPlanForm.invalid">Add</button>
+    </div>
+  </form>
+  <ul class="list-group mt-3">
+    <li *ngFor="let dietPlan of dietPlans()"
+        (click)="onDietPlanClick(dietPlan)"
+        [class.active]="dietPlan === currentDietPlan"
+        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+      {{dietPlan.name}}
+      <span class="badge bg-primary rounded-pill">{{dietPlan.meals.length}} meals</span>
+    </li>
+  </ul>
+</div>

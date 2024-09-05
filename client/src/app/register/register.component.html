@@ -1,0 +1,37 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+  <h2 class="text-center text-primary">Sign up</h2>
+  <hr>
+
+  <div class="mb-3">
+    <label style="margin-right: 10px;">I am a:</label>
+    <label class="form-check-label me-2">
+      <input type="radio" class="form-check-input" value="male" formControlName="gender"> Male
+    </label>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input" value="female" formControlName="gender"> Female
+    </label>
+  </div>
+
+  <app-text-input formControlName="username" label="Username"/>
+  <app-text-input formControlName="email" label="Email" type="email"/>
+  <small>Password must be 4-8 characters long</small>
+  <app-text-input formControlName="password" label="Password" type="password"/>
+  <app-text-input formControlName="confirmPassword" label="Confirm Password" type="password"/>
+  <app-date-picker formControlName="dateOfBirth" label="Date of Birth" [maxDate]="maxDate"/>
+
+  @if (validationErrors) {
+    <div class="alert alert-danger text-start">
+      <ul>
+        @for (error of validationErrors; track $index) {
+          <li>{{error.description}}</li>
+        }
+      </ul>
+    </div>
+  }
+
+  <div class="form-group text-center">
+    <button [disabled]="!registerForm.valid" class="btn btn-success me-2" type="submit">Register</button>
+    <button class="btn btn-success me-2" (click)="cancel()" type="button">Cancel</button>
+  </div>
+
+</form>

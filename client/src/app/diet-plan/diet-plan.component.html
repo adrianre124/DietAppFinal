@@ -1,0 +1,66 @@
+<div class="diet-plan-container">
+  <app-diet-plan-list [dietPlans]="dietPlans" (selectedDietPlan)="onDietPlanSelected($event)"
+    (createdDietPlan)="onDietPlanCreated($event)" />
+
+  <div class="diet-plan-details">
+      <h2>
+        <div class="d-flex justify-content-between">
+          <input *ngIf="showChangeName" class="d-inline-block w-auto"
+            (keydown.enter)="saveName()" (keydown.escape)="toggleChangeName()" [(ngModel)]="editName"/>
+          <span *ngIf="!showChangeName">{{currentDietPlan?.name}}
+            <button class="btn btn-info btn-sm" (click)="toggleChangeName()"><fa-icon [icon]="faEdit"
+              size="lg"></fa-icon> Edit Name</button>
+            <button class="btn btn-success btn-sm mx-2" (click)="saveChanges()"><fa-icon [icon]="faSave"
+              size="lg"></fa-icon> Save Changes</button>
+          </span>
+          <button *ngIf="!showChangeName" class="btn btn-danger btn-sm"
+            (click)="deleteDietPlan(currentDietPlan?.dietPlanId!)"><fa-icon [icon]="faTrash" size="lg"></fa-icon></button>
+        </div>
+      </h2>
+    <hr>
+
+    <div *ngFor="let meal of currentDietPlan?.meals; trackBy: trackByMealId; index as i">
+      <h5>{{meal.name}} <button class="btn btn-danger btn-sm" (click)="deleteMeal(i)"><fa-icon
+            [icon]="faTrash"></fa-icon></button></h5>
+      <app-product-list [products]="meal.products" (deletedProduct)="onProductDeleted($event, i)" />
+      <app-search (product)="onProductAdd($event, i)"/>
+      <hr>
+    </div>
+
+    <app-meal (addedMeal)="onMealAdded($event)" />
+
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th></th>
+          <th>Product Name</th>
+          <th>Calories (kcal)</th>
+          <th>Fats (g)</th>
+          <th>Carbohydrates (g)</th>
+          <th>Proteins (g)</th>
+          <th>Salt (g)</th>
+          <th>Weight (g)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="align-middle">
+        <tr>
+          <td></td>
+          <td>{{totalNutrition.productName}}</td>
+          <td>{{totalNutrition.calories | number : '1.0-2'}}</td>
+          <td>{{totalNutrition.fats | number : '1.0-2'}}</td>
+          <td>{{totalNutrition.carbohydrates | number : '1.0-2'}} <small class="text-muted ml-4">Sugars:
+              {{totalNutrition.sugars | number : '1.0-2'}}</small></td>
+          <td>{{totalNutrition.proteins | number : '1.0-2'}}</td>
+          <td>{{totalNutrition.salt | number : '1.0-2'}}</td>
+          <td>{{totalNutrition.weight | number : '1.0-2'}}</td>
+          <td></td>
+        </tr>
+        <tr *ngIf="totalNutrition.calories == 0">
+          <td colspan="9" class="text-center text-muted">No products added to this section.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,54 @@
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th></th>
+      <th>Product Name</th>
+      <th>Calories (kcal)</th>
+      <th>Fats (g)</th>
+      <th>Carbohydrates (g)</th>
+      <th>Proteins (g)</th>
+      <th>Salt (g)</th>
+      <th>Weight (g)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class="align-middle">
+    <tr *ngFor="let product of products(); index as i">
+      <td class="text-center"><img [src]="product.imageUrl || 'assets/product.jpg'" alt="" class="img-thumbnail"></td>
+      <td>{{product.productName}}</td>
+      <td>
+        <span>{{product.calories | number: '1.0-2'}}</span>
+      </td>
+      <td>
+        <span>{{product.fats | number: '1.0-2'}}</span>
+      </td>
+      <td>
+        <span>{{product.carbohydrates | number: '1.0-2'}}</span>
+        <small class="text-muted ml-4">
+          Sugars:
+          <span>{{product.sugars | number: '1.0-2'}}</span>
+        </small>
+      </td>
+      <td>{{product.proteins | number: '1.0-2'}}</td>
+      <td>{{product.salt | number: '1.0-2'}}</td>
+      <td>{{product.weight | number: '1.0-2'}}</td>
+      <td class="text-center">
+        <button class="btn btn-danger btn-sm" (click)="deleteProduct(i)"><fa-icon [icon]="faTrash"></fa-icon></button>
+      </td>
+    </tr>
+    <tr *ngIf="products().length > 0">
+      <td></td>
+      <td>{{summedNutritionalValues.productName}}</td>
+      <td>{{summedNutritionalValues.calories | number : '1.0-2'}}</td>
+      <td>{{summedNutritionalValues.fats | number : '1.0-2'}}</td>
+      <td>{{summedNutritionalValues.carbohydrates | number : '1.0-2'}} <small class="text-muted ml-4">Sugars: {{summedNutritionalValues.sugars | number : '1.0-2'}}</small></td>
+      <td>{{summedNutritionalValues.proteins | number : '1.0-2'}}</td>
+      <td>{{summedNutritionalValues.salt | number : '1.0-2'}}</td>
+      <td>{{summedNutritionalValues.weight | number : '1.0-2'}}</td>
+      <td></td>
+    </tr>
+    <tr *ngIf="products().length == 0">
+      <td colspan="9" class="text-center text-muted">No products added to this section.</td>
+    </tr>
+  </tbody>
+</table>

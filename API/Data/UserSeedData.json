@@ -1,0 +1,72 @@
+[
+    {
+        "UserName": "Beasley",
+        "Email": "beasleyacevedo@fossiel.com",
+        "Gender": "male",
+        "DateOfBirth": "1985-05-28",
+        "Created": "2020-03-23"
+      },
+      {
+        "UserName": "Ellison",
+        "Email": "ellisonacevedo@fossiel.com",
+        "Gender": "male",
+        "DateOfBirth": "1996-12-16",
+        "Created": "2020-04-19"
+      },
+      {
+        "UserName": "Schroeder",
+        "Email": "schroederacevedo@fossiel.com",
+        "Gender": "male",
+        "DateOfBirth": "1975-08-03",
+        "Created": "2020-05-19"
+      },
+      {
+        "UserName": "Solis",
+        "Email": "solisacevedo@fossiel.com",
+        "Gender": "male",
+        "DateOfBirth": "1988-05-17",
+        "Created": "2020-03-18"
+      },
+      {
+        "UserName": "Foley",
+        "Email": "foleyacevedo@fossiel.com",
+        "Gender": "male",
+        "DateOfBirth": "1988-09-26",
+        "Created": "2020-02-28"
+      },
+      {
+        "UserName": "Valeria",
+        "Email": "valeriaacevedo@fossiel.com",
+        "Gender": "female",
+        "DateOfBirth": "1971-10-09",
+        "Created": "2020-01-11"
+      },
+      {
+        "UserName": "Connie",
+        "Email": "connieacevedo@fossiel.com",
+        "Gender": "female",
+        "DateOfBirth": "1972-12-20",
+        "Created": "2020-06-27"
+      },
+      {
+        "UserName": "Ella",
+        "Email": "ellaacevedo@fossiel.com",
+        "Gender": "female",
+        "DateOfBirth": "1998-06-16",
+        "Created": "2020-06-21"
+      },
+      {
+        "UserName": "Laurel",
+        "Email": "laurelacevedo@fossiel.com",
+        "Gender": "female",
+        "DateOfBirth": "1985-10-31",
+        "Created": "2020-01-27"
+      },
+      {
+        "UserName": "Sallie",
+        "Email": "sallieacevedo@fossiel.com",
+        "Gender": "female",
+        "DateOfBirth": "1981-11-12",
+        "Created": "2020-03-03"
+      }
+]

@@ -1,0 +1,23 @@
+.side-menu {
+  max-width: 210px;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu li {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #eee;
+}
+
+.side-menu li.active {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
